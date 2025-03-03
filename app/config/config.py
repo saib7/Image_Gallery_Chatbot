@@ -1,7 +1,22 @@
+import os
+
 # File paths and database settings
-DEFAULT_DB_PATH = "app/storage"
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+database_path = os.path.join(current_dir, "..", "storage")
+database_path = os.path.normpath(database_path) # Normalize the path to handle any platform-specific issues (e.g., Windows vs. Unix)
+
+env_path = os.path.join(current_dir,"..", "..", ".env")
+env_path = os.path.normpath(env_path)
+
+image_data_path = os.path.join(current_dir, "..", "static", "image_data")
+image_data_path = os.path.normpath(image_data_path)
+
+
+DEFAULT_DB_PATH = database_path
 DEFAULT_COLLECTION_NAME = "image_embeddings2"
-ENV_FILE_PATH = "../../.env"
+ENV_FILE_PATH = env_path
+IMAGE_DATA_FILE_PATH = image_data_path
 
 
 

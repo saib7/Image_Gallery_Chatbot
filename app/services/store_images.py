@@ -1,13 +1,11 @@
 import os
-from app.vectrodb_models.vectrodb import ChromaDatabase
+from app.vectrodb_models.vectordb import ChromaDatabase
+from app.config import config
 
-current_dir = os.path.dirname(os.path.abspath(__file__))
-image_data_path = os.path.join(current_dir, "..", "static", "image_data")
-persist_dir = os.path.join(current_dir, "..", "storage")
 
-# Normalize the path to handle any platform-specific issues (e.g., Windows vs. Unix)
-image_data_path = os.path.normpath(image_data_path)
-persist_dir = os.path.normpath(persist_dir)
+
+image_data_path = "../static/image_data"
+persist_dir = config.DEFAULT_DB_PATH
 print(image_data_path)
 print(persist_dir)
 
