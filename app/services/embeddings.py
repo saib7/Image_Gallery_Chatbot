@@ -100,9 +100,3 @@ class EmbeddingProcessor:
             return (self.clip.embed_image(image_path) + self.clip.embed_text(text)) / 2
         return self.clip.embed_image(image_path) if image_path else self.clip.embed_text(text)
 
-
-# import dotenv
-# import os
-# dotenv.load_dotenv(dotenv_path=config.ENV_FILE_PATH)
-# api_key = os.getenv(config.API_KEY_ENV_VAR)
-# print(api_key)

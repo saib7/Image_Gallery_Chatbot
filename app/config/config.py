@@ -1,12 +1,8 @@
-# config.py
-
 # File paths and database settings
-DEFAULT_DB_PATH = "db"
+DEFAULT_DB_PATH = "app/storage"
 DEFAULT_COLLECTION_NAME = "image_embeddings2"
 ENV_FILE_PATH = "../../.env"
 
-# from dotenv import load_dotenv
-# load_dotenv(dotenv_path="../../.env")
 
 
 # API and model settings
