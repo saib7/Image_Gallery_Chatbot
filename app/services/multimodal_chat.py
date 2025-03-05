@@ -95,6 +95,9 @@ class ResponseFormatter:
         Returns:
             str: A summarized paragraph or a fallback message if no descriptions are available.
         """
+        image_paths = [path.replace("../", "app/") for path in image_paths] ## added later
+        ## Because in db path is saved as /app/static/image_data
+        ## Not as /static/image_data
         descriptions = [
             desc for path in image_paths
             if (desc := self.describe_image(path)) and desc != config.FAILED_IMAGE_LOAD
