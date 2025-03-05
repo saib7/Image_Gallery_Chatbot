@@ -42,11 +42,13 @@ async def upload_files(background_tasks: BackgroundTasks, files: List[UploadFile
     Handle multiple image uploads and save them to the static/images directory.
     """
     for file in files:
-        upload_path = f"../static/image_data/{file.filename}"
+        upload_path = f"app/static/image_data/{file.filename}"
+
         with open(upload_path, "wb") as buffer:
             buffer.write(await file.read())
 
-    upload_dir = "../static/image_data"
+    upload_dir = "app/static/image_data"
+    # upload_dir = "app/static/image_data"
     background_tasks.add_task(process_images_background, upload_dir)
     return {"message": f"{len(files)} files successfully uploaded!"}
 

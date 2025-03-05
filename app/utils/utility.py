@@ -25,7 +25,7 @@ class PathRetriever:
             image_paths.append(data["metadatas"][i]["image_path"])
 
         # Replace paths
-        # image_paths = [path.replace("../frontend/", "../") for path in image_paths]
+        image_paths = [path.replace("app/", "../") for path in image_paths]
 
         return image_paths
 
@@ -78,8 +78,8 @@ class MapThroughPath:
 
         for idx, metadata in enumerate(self.data['metadatas']):
             path = metadata.get('image_path')
-            # image_path = path.replace("../frontend/", "../")
-            image_path = path
+            image_path = path.replace("app/", "../")
+            # image_path = path
             document = self.data['documents'][idx]
 
             # Split the metadata fields into lists
@@ -134,7 +134,8 @@ class ChatUtils:
             return []
         relevant_part = response_content.split(config.RELEVANT_IMAGES_PREFIX)[-1].strip()
         listed_paths = [path.strip() for path in relevant_part.split(",")]
-        return [path for path in listed_paths if path in all_image_paths]
+        # return [path for path in listed_paths if path in all_image_paths]
+        return [path.replace("app/", "../") for path in listed_paths if path in all_image_paths]
 
     def clean_response_text(self, response_content):
         """Removes inline image references from the response text.
